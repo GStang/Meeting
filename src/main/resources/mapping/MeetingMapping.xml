@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swpuiot.bean">
+    <resultMap id="meetingDataAdapter" type="com.swpuiot.bean.MeetingData">
+        <result column="meetingname" property="meetingName"/>
+        <result column="meetingid" property="meetingId"/>
+        <result column="path" property="path"/>
+        <result column="meetingtime" property="date" javaType="java.util.Date" />
+    </resultMap>
+    <select id="selectMeetingByTime" resultMap="meetingDataAdapter" parameterType="java.lang.String">
+        select * from meeting where meetingtime = #{_parameter}
+
+    </select>
+    <select id="selectAllMeet" resultMap="meetingDataAdapter">
+        select *
+        from meeting
+    </select>
+    <select id="selectMeetingByName" resultMap="meetingDataAdapter" parameterType="String">
+        select *
+        from meeting
+        where
+            meetingname = #{_parameter,jdbcType=VARCHAR}
+    </select>
+    <insert id="insertInMeeting" parameterType="com.swpuiot.bean.MeetingData">
+        insert into meeting (meetingname, meetingtime, path) values (#{meetingName}, #{date,jdbcType=DATE}, #{path})
+    </insert>
+
+</mapper>
