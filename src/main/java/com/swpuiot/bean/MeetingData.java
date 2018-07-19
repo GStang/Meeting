@@ -49,4 +49,8 @@ public class MeetingData {
     public void setMeetingId(int meetingId) {
         this.meetingId = meetingId;
     }
+
+
+
+
 }
