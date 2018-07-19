@@ -18,7 +18,6 @@ public class MeetingData {
     private Date date;
     private String path;
 
-
     public String getPath() {
         return path;
     }
